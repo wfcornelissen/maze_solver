@@ -4,8 +4,8 @@ class Window ():
     def __init__(self, width, height):
         self.__root = Tk()
         self.__root.title("Maze Generator")
-        self.canvas = Canvas(self.__root,bg="white", width=width, height=height)
-        self.canvas.pack(fill=BOTH, expand=1)
+        self.__canvas = Canvas(self.__root,bg="white", width=width, height=height)
+        self.__canvas.pack(fill=BOTH, expand=1)
         self.running = False
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
 
@@ -22,6 +22,10 @@ class Window ():
     def close(self):
         self.running = False
 
+    def draw_line(self, line, fill_color="black"):
+        line.draw(self.__canvas, fill_color)
+
+
 class Point():
     def __init__(self, x, y):
         self.x = x
@@ -33,4 +37,4 @@ class Line():
         self.second = second_point
     
     def draw(self, canvas, fill_color):
-        canvas.create_line(x1, y1, x2, y2, fill=fill_color, width=2)
+        canvas.create_line(self.first.x, self.second.y, self.second.x, self.first.y, fill=fill_color, width=2)
