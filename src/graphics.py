@@ -37,7 +37,7 @@ class Line():
         self.second = second_point
     
     def draw(self, canvas, fill_color="black"):
-        canvas.create_line(self.first.x, self.second.y, self.second.x, self.first.y, fill=fill_color, width=2)
+        canvas.create_line(self.first.x, self.first.y, self.second.x, self.second.y, fill=fill_color, width=2)
 
 class Cell:
     def __init__(self, win):
@@ -79,7 +79,7 @@ class Cell:
         mid_y2 = (to_cell._y1 + to_cell._y2) / 2
         
         # Determine the color based on the undo parameter
-        color = "red" if undo else "green"
+        color = "red" if undo else "gray"
         
         # Draw the line between the midpoints
         line = Line(Point(mid_x1, mid_y1), Point(mid_x2, mid_y2))
